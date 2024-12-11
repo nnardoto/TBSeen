@@ -1,0 +1,8 @@
+name   = "FreeTBX"
+author = "nnardoto"
+
+[dependencies]
+libfdf.git    = "https://gitlab.com/nnardoto/libfdf"
+TermTools.git = "https://github.com/nnardoto/TermTools"
+mfi           = { git="https://github.com/14NGiestas/mfi.git", branch="mfi-fpm" }
+openmp        = "*"
