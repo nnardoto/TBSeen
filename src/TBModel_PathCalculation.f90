@@ -19,27 +19,27 @@ submodule (TBModel) PathCalculation
     call inLine("Total kPoints", TotKp)
 
 
-    allocate(Bands(TotKp, MSize))
+    allocate(Bands(MSize, TotKp))
     allocate(HH(MSize, MSize))
-    allocate(kpts(TotKp, 3))
+    allocate(kpts(3, TotKp))
     allocate(kLenght(TotKp))
 
     k = 1
     kLenght(1) = 0.0d0
     do i = 1, size(nPath) - 1
-      dk = (FullPath(i + 1, :) - FullPath(i, :)) / (nPath(i))
+      dk = (FullPath(:, i + 1) - FullPath(:, i)) / (nPath(i))
       do j = 1, nPath(i)
-        kpts(k, :) = FullPath(i, :) + (j - 1)*dk
+        kpts(:, k) = FullPath(:, i) + (j - 1)*dk
         kLenght(k + 1) = kLenght(k) + NORM2(dk)
         k = k + 1
       enddo
     enddo
-    kpts(k, :) =  BandCalc(FullPath(size(nPath), :))
+    kpts(:, k) =  FullPath(:, size(nPath))
 
     !call inLine("kPoints Calculation Progress: ", k, TotKp)
     !$omp parallel do private(i)
      do i = 1, TotKp
-       Bands(i, :) = BandCalc(kpts(i, :))
+       Bands(:, i) = BandCalc(kpts(:, i))
        !call inLine("kPoints Calculation Progress: ", i, TotKp, OMP_GET_THREAD_NUM())
      enddo
     !$omp end parallel do
@@ -49,7 +49,7 @@ submodule (TBModel) PathCalculation
     open(newunit = fp, file = BandFileName, action = 'write' )
     do j = 1, MSize
       do i = 1, TotKp
-        write(fp, *) kLenght(i), Bands(i, j)
+        write(fp, *) kLenght(i), Bands(j, i)
     enddo
       write(fp, *) ''
     enddo
