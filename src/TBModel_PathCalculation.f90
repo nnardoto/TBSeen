@@ -4,13 +4,13 @@ submodule (TBModel) PathCalculation
   module procedure PathCalc
     use OMP_LIB
     implicit none
-    integer                ::  i, j, k, TotKp, fp
-    character(len=:), allocatable :: BandFileName
-    real(dp)                 ::  dk(3)
-    real(dp), allocatable    ::  kpts(:,:)
-    real(dp), allocatable    ::  Bands(:,:)
-    real(dp), allocatable    ::  kLenght(:)
-    complex(dp), allocatable ::  HH(:,:)
+    integer                         ::  i, j, k, TotKp, fp
+    character(len=:), allocatable   ::  BandFileName
+    real(dp)                        ::  dk(3)
+    real(dp), allocatable           ::  kpts(:,:)
+    real(dp), allocatable           ::  Bands(:,:)
+    real(dp), allocatable           ::  kLenght(:)
+    complex(dp), allocatable        ::  HH(:,:)
 
     ! Allocate Memory for BandCalculation
     TotKp = sum(nPath) - nPath(size(nPath)) + 1
@@ -37,12 +37,12 @@ submodule (TBModel) PathCalculation
     kpts(:, k) =  FullPath(:, size(nPath))
 
     !call inLine("kPoints Calculation Progress: ", k, TotKp)
-    !$omp parallel do private(i)
+    !$omp parallel
      do i = 1, TotKp
        Bands(:, i) = BandCalc(kpts(:, i))
        !call inLine("kPoints Calculation Progress: ", i, TotKp, OMP_GET_THREAD_NUM())
      enddo
-    !$omp end parallel do
+    !$omp end parallel
 
     !Escreve Bandas
     BandFileName = trim(SystemName) // "_band.dat"

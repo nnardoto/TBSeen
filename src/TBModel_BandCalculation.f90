@@ -2,7 +2,7 @@ submodule (TBModel) BandCalculation
     contains
         module procedure Ortho_BandCalc
             implicit none
-            complex(dp), parameter  :: JJ = (0.0d0, 2.0d0)
+            complex(dp), parameter  :: JJ = (0.0d0, 2.0d0)*pi
             complex(dp) :: Phi
             complex(dp), allocatable :: HH(:,:)
             integer  :: i
@@ -14,8 +14,8 @@ submodule (TBModel) BandCalculation
             ! Initialize with zeros
             HH = (0.0d0, 0.0d0)
             do i = 1, nFock
-                Phi = JJ*pi*dot_product(iRn(i,:), Kp)
-                HH = HH + H(i, :,:) * exp(Phi)
+                Phi = JJ*dot_product(iRn(:, i), Kp)
+                HH = HH + H(:,:, i) * exp(Phi)
             enddo
             ! todo lowdin Diagonalization
 
@@ -43,8 +43,8 @@ submodule (TBModel) BandCalculation
             ! Initialize with zeros
             HH = (0.0d0, 0.0d0)
             do i = 1, nFock
-                Phi = JJ*pi*dot_product(iRn(i,:), Kp)
-                HH = HH + H(i, :,:) * exp(Phi)
+                Phi = JJ*pi*dot_product(iRn(:, i), Kp)
+                HH = HH + H(:,:, i) * exp(Phi)
             enddo
             ! todo lowdin Diagonalization
 

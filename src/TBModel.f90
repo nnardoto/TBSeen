@@ -8,21 +8,19 @@ module TBModel
 
     ! System information to load system
     public :: LoadSystem
-    public :: LoadHamiltonian
-    public :: BandCalc
     public :: PathCalc
 
     private
-        real(dp), parameter  :: pi = 3.1415926535897932384626433832795028841971693
-        character(len = 200) :: SystemName, HFile, SFile
-        integer :: MSize, nFock
-        logical :: isOrthogonal
-        integer, allocatable :: Degen(:), iRn(:,:)
+        real(dp), parameter      :: pi = 3.1415926535897932384626433832795028841971693
+        character(len = 200)     :: SystemName, HFile, SFile
+        integer                  :: MSize, nFock
+        logical                  :: isOrthogonal
+        integer, allocatable     :: Degen(:), iRn(:,:)
         complex(dp), allocatable :: H(:,:,:), S(:,:,:)
 
         ! PathCalculation
-        real(dp), allocatable :: FullPath(:,:)
-        integer , allocatable :: nPath(:)
+        real(dp), allocatable    :: FullPath(:,:)
+        integer , allocatable    :: nPath(:)
 
         ! Parallel Variables
         integer nThreads
@@ -45,18 +43,6 @@ module TBModel
         module subroutine LoadOverlap()
         end subroutine
 
-        ! To BandCalculation
-        module function Ortho_BandCalc(Kp) result(EigVal)
-          real(dp), dimension(3)     :: kp
-          real(dp), allocatable      :: EigVal(:)
-        end function
-
-        module function nonOrtho_BandCalc(Kp) result(EigVal)
-          real(dp), dimension(3)     :: kp
-          real(dp), allocatable      :: EigVal(:)
-        end function
-
-        ! To PathBand
         module subroutine PathCalc()
         end subroutine
     end interface
@@ -71,11 +57,21 @@ module TBModel
     end interface
 
     interface
+      module function Ortho_BandCalc(Kp) result(EigVal)
+        real(dp), dimension(3)     :: kp
+        real(dp), allocatable      :: EigVal(:)
+      end function
+
+      module function nonOrtho_BandCalc(Kp) result(EigVal)
+        real(dp), dimension(3)     :: kp
+        real(dp), allocatable      :: EigVal(:)
+      end function
+
       module subroutine OrthoMode()
       end subroutine
 
       module subroutine nonOrthoMode()
-      endsubroutine
+      end subroutine
     end interface
 
 end module
