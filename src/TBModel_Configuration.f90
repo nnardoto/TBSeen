@@ -76,9 +76,11 @@ submodule (TBModel) Configuration
           read(olpFile, *) olp_num
           isOrthogonal = .false.
           call TitleBox("NON ORTHOGONAL SYSTEM")
+          call nonOrthoMode()
         close(olpFile)
       else
           call TitleBox("ORTHOGONAL SYSTEM")
+          call OrthoMode()
       endif
 
       if(isOrthogonal .eqv. .false.) then
@@ -229,5 +231,16 @@ submodule (TBModel) Configuration
     call fdf_bclose(KPath)
 
     end subroutine
+
+
+    ! Subroutines for Change execution mode
+
+    module procedure OrthoMode
+      BandCalc => Ortho_BandCalc
+    end procedure
+
+    module procedure nonOrthoMode
+      BandCalc => nonOrtho_BandCalc
+    end procedure
 
 end submodule Configuration

@@ -27,6 +27,10 @@ module TBModel
         ! Parallel Variables
         integer nThreads
 
+        ! Simplify the Ortho/nonOrtho switching
+        procedure(BandCalculation), pointer :: BandCalc => null()
+
+
     interface
         ! load and build the tight binding model for system
         module subroutine LoadSystem()
@@ -42,14 +46,36 @@ module TBModel
         end subroutine
 
         ! To BandCalculation
-        module function BandCalc(Kp) result(EigVal)
-          real(dp),  dimension(3)    :: kp
+        module function Ortho_BandCalc(Kp) result(EigVal)
+          real(dp), dimension(3)     :: kp
+          real(dp), allocatable      :: EigVal(:)
+        end function
+
+        module function nonOrtho_BandCalc(Kp) result(EigVal)
+          real(dp), dimension(3)     :: kp
           real(dp), allocatable      :: EigVal(:)
         end function
 
         ! To PathBand
         module subroutine PathCalc()
         end subroutine
+    end interface
+
+
+    ! Basics for switch Ortho/nonOrtho mode
+    abstract interface
+      module function BandCalculation(Kp) result(EigVal)
+        real(dp), dimension(3)     :: kp
+        real(dp), allocatable      :: EigVal(:)
+      end function
+    end interface
+
+    interface
+      module subroutine OrthoMode()
+      end subroutine
+
+      module subroutine nonOrthoMode()
+      endsubroutine
     end interface
 
 end module
