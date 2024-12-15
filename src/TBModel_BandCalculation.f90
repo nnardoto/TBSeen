@@ -15,7 +15,7 @@ submodule (TBModel) BandCalculation
             HH = (0.0d0, 0.0d0)
             do i = 1, nFock
                 Phi = JJ*dot_product(iRn(:, i), Kp)
-                HH = HH + H(:,:, i) * exp(Phi)
+                HH = HH + Degen(i) * H(:,:, i) * exp(Phi)
             enddo
             ! todo lowdin Diagonalization
 

@@ -8,10 +8,10 @@ program FreeTBX
   call MainTitle("FreeTBX: A Modern Fortran Tight Binding Exploration Code", "Nathanael N. Batista", "nnardoto@gmail.com", "v0.0.1")
   ! Catch arguments from terminal and load system
   call LoadSystem()
-  call CPU_TIME(BeginTime) 
+  call CPU_TIME(BeginTime)
   call PathCalc()
   call CPU_TIME(TotalTime)
-  call TitleBox("End Calculations") 
-  call inLine("Execution Time (s): ", TotalTime - StepTime)
+  call TitleBox("End Calculations")
+  call inLine("Execution Time (s): ", TotalTime - BeginTime)
   call LineBox()
 end program
