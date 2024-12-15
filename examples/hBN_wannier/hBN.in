@@ -1,0 +1,10 @@
+SystemName          hBN
+HFile               examples/hBN_wannier/W90/hBN_hr.dat
+
+BandCalc            ON
+%block KPath
+  0.00000000   0.00000000   0.00000000 2000
+  0.50000000   0.00000000   0.00000000 2000
+  0.33333333   0.33333333   0.00000000 2000
+  0.00000000   0.00000000   0.00000000 1
+%endblock KPath

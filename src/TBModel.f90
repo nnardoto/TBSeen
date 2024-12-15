@@ -37,12 +37,6 @@ module TBModel
         module subroutine SysConfig()
         end subroutine
 
-        module subroutine LoadHamiltonian()
-        end subroutine
-
-        module subroutine LoadOverlap()
-        end subroutine
-
         module subroutine PathCalc()
         end subroutine
     end interface
@@ -67,11 +61,6 @@ module TBModel
         real(dp), allocatable      :: EigVal(:)
       end function
 
-      module subroutine OrthoMode()
-      end subroutine
-
-      module subroutine nonOrthoMode()
-      end subroutine
     end interface
 
 end module

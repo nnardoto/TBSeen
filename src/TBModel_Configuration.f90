@@ -125,7 +125,7 @@ submodule (TBModel) Configuration
     call LineBox()
     end procedure SysConfig
 
-    module procedure LoadHamiltonian
+    subroutine LoadHamiltonian()
       implicit none
       integer :: fp
       integer :: i, ii, jj, l, m, n
@@ -158,9 +158,9 @@ submodule (TBModel) Configuration
           H(ii, jj, idx) = complex(R, Im)
         enddo
       close(fp)
-    end procedure LoadHamiltonian
+    end subroutine LoadHamiltonian
 
-    module procedure LoadOverlap
+    subroutine LoadOverlap()
       implicit none
       integer :: fp
       integer :: i, ii, jj, l, m, n
@@ -194,8 +194,7 @@ submodule (TBModel) Configuration
           S(ii, jj, idx) = complex(R, Im)
         enddo
       close(fp)
-    end procedure LoadOverlap
-
+    end subroutine LoadOverlap
 
     subroutine MakePath()
       implicit none
@@ -215,32 +214,32 @@ submodule (TBModel) Configuration
       allocate(FullPath(3, N))
       allocate(nPath(N))
 
-    ! Save FullPath
-    if(fdf_block('KPath', KPath)) then
-      j = 1
-      do while(fdf_bline(KPath, pline))
-          do i = 1, 3
-            FullPath(i, j) = fdf_breals(pline, i)
-            nPath(j)       = fdf_bintegers(pline, 1)
-          enddo
+      ! Save FullPath
+      if(fdf_block('KPath', KPath)) then
+        j = 1
+        do while(fdf_bline(KPath, pline))
+            do i = 1, 3
+              FullPath(i, j) = fdf_breals(pline, i)
+              nPath(j)       = fdf_bintegers(pline, 1)
+            enddo
+  
+            j = j + 1
+        enddo
+      endif
 
-          j = j + 1
-      enddo
-    endif
-
-    call fdf_bclose(KPath)
+      call fdf_bclose(KPath)
 
     end subroutine
 
 
     ! Subroutines for Change execution mode
 
-    module procedure OrthoMode
+    subroutine OrthoMode
       BandCalc => Ortho_BandCalc
-    end procedure
+    end subroutine
 
-    module procedure nonOrthoMode
+    subroutine nonOrthoMode
       BandCalc => nonOrtho_BandCalc
-    end procedure
+    end subroutine
 
 end submodule Configuration
