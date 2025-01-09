@@ -1,5 +1,5 @@
-# FreeTBX
-FreeTBX: Another _Modern_ Fortran Tight Binding Code
+# TBSeen
+TBSeen: A Tight Binding Code for Beyond DFT Exploration
 
 ### Prerequisites
 * Lapack and Blas Libraries
@@ -9,7 +9,7 @@ FreeTBX: Another _Modern_ Fortran Tight Binding Code
 * Get the newest version of Fortran Package Manager
 ** [fpm 0.10.1-x86_64](https://github.com/fortran-lang/fpm/releases/download/v0.10.1/fpm-0.10.1-linux-x86_64)
 
-### Instalation of FreeTBX
+### Instalation of TBSeen
 Just clone this repo
 
 '''
