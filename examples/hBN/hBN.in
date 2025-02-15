@@ -1,5 +1,5 @@
 SystemName          hBN
-HFile               examples/hBN/SK/hamiltonian.dat
+HFile               hamiltonian.dat
 
 BandCalc            ON
 %block KPath

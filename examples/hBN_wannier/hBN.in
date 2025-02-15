@@ -1,5 +1,5 @@
 SystemName          hBN
-HFile               examples/hBN_wannier/W90/hBN_hr.dat
+HFile               hBN_hr.dat
 
 BandCalc            ON
 %block KPath
