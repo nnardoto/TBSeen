@@ -5,7 +5,7 @@ program FreeTBX
   implicit none
   real BeginTime, StepTime, TotalTime
 
-  call MainTitle("FreeTBX: A Modern Fortran Tight Binding Exploration Code", "Nathanael N. Batista", "nnardoto@gmail.com", "v0.0.1")
+  call MainTitle("TBSeen: A Tight Binding Code for Beyond DFT Exploration", "Nathanael N. Batista", "nnardoto@gmail.com", "v0.0.1")
   ! Catch arguments from terminal and load system
   call LoadSystem()
   call CPU_TIME(BeginTime)

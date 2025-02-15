@@ -1,18 +1,19 @@
-# TBSeen
-TBSeen: A Tight Binding Code for Beyond DFT Exploration
+# TBSeen: A Tight Binding Code for Beyond DFT Exploration
 
-### Prerequisites
+## Prerequisites
 * Lapack and Blas Libraries
 * Fortran Package Manager
 
-### Instalation of Fortran Package Manager _(linux)_
-* Get the newest version of Fortran Package Manager
-** [fpm 0.10.1-x86_64](https://github.com/fortran-lang/fpm/releases/download/v0.10.1/fpm-0.10.1-linux-x86_64)
+## Instalation of Fortran Package Manager
+* Get the newest version of [Fortran Package Manager](https://fpm.fortran-lang.org/install/index.html)
+```
+wget https://github.com/fortran-lang/fpm/releases/download/v0.10.1/fpm-0.10.1-linux-x86_64 -O ~/.local/bin/
+```
 
-### Instalation of TBSeen
-Just clone this repo
-
-'''
-git clone --depth 1 https://github.com/nnardoto/TermTools
-'''
-
+## Instalation of TBSeen (Shortest Way)
+```
+git clone --depth 1 https://github.com/nnardoto/TBSeen
+cd TBSeen
+fpm build
+fpm install
+```
