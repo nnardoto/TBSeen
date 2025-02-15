@@ -10,10 +10,15 @@
 wget https://github.com/fortran-lang/fpm/releases/download/v0.10.1/fpm-0.10.1-linux-x86_64 -O ~/.local/bin/
 ```
 
-## Instalation of TBSeen (Shortest Way)
+## Instalation (Shortest Way)
 ```
 git clone --depth 1 https://github.com/nnardoto/TBSeen
 cd TBSeen
 fpm build
 fpm install
+```
+
+## Usage
+```
+TBSeen Input_File.in
 ```
