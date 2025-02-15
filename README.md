@@ -12,7 +12,7 @@ Instalation of Fortran Package Manager
 
 * Get the newest version of [Fortran Package Manager](https://fpm.fortran-lang.org/install/index.html)
 ```
-wget https://github.com/fortran-lang/fpm/releases/download/v0.10.1/fpm-0.10.1-linux-x86_64 -O ~/.local/bin/
+wget https://github.com/fortran-lang/fpm/releases/download/v0.10.1/fpm-0.10.1-linux-x86_64 -O ~/.local/bin/fpm
 chmod +x ~/.local/bin/fpm
 ```
 
