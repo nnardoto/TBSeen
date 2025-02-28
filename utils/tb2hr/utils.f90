@@ -52,6 +52,7 @@ module utils
                 allocate(iRn(nFock, 3))
 
                 ! degen read, 15 elements by line
+                i = 1
                 if ((nFock / 15) .gt. 1) then
                     do i = 1, (nFock / 15)
                         read(fp, *) Degen((i - 1)*15 + 1:(i - 1)*15 + 15)
